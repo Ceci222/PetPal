@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;  
+    text-align: center;  
+}
+
+#hero img {
+    width: 50%;  
+    height: auto; 
+}
+
+
+.social-media {
+    display: flex;
+    justify-content: space-around;
+
+}
