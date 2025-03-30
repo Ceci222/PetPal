@@ -1,9 +1,13 @@
 
+document.getElementById('home-link').addEventListener('DOMContentLoaded', function(event) {
+    event.preventDefault();  
+    showHome(); 
+});
 
 document.addEventListener('DOMContentLoaded', function(event) {
     event.preventDefault();  
     showHome(); 
-}); 
+});  
 
 
 function showHome(){
@@ -29,7 +33,7 @@ function showHome(){
     homeMessage.appendChild(homeParagraph);
     homeMessage.appendChild(homeImg);
 
-}
+} 
 
 
 
@@ -42,9 +46,9 @@ document.getElementById('contact-link').addEventListener('click', function(event
 function showContactForm(){
     const contactSection = document.getElementById('contact');
 
-    const indexMessage = document.getElementById('index-message');
-
-    indexMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
+    const homeMessage = document.getElementById('home-message');
+    // si elimino esto el formulario funciona pero en la pagina principal
+    homeMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
     
     //Campo name
 
