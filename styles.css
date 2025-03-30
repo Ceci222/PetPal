@@ -4,7 +4,7 @@
     justify-content: space-evenly;
 }
 
-#index-message {
+#home-message {
     display: flex;
     flex-direction: column;
     justify-content: center;  
@@ -12,7 +12,7 @@
     text-align: center;  
 }
 
-#index-message img {
+#home-message img {
     width: 50%;  
     height: auto; 
 }
