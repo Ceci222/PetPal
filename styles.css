@@ -23,3 +23,27 @@
     justify-content: space-around;
 
 }
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20em;
+    margin-left: 20em;
+}
+
+#contact h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#contact button {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 6em;
+    padding-right: 6em;
+    margin-left: auto;
+    margin-right: auto;
+}

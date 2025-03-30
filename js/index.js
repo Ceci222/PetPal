@@ -10,9 +10,14 @@ document.getElementById('contact-link').addEventListener('click', function(event
 function showContactForm(){
     const contactSection = document.getElementById('contact');
 
+    const indexMessage = document.getElementById('index-message');
+
+    indexMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
     //Campo name
 
     const contactH1 = document.createElement('h1');
+
+    contactH1.textContent = 'Contact us';
 
     const labelName = document.createElement('label');
 
@@ -24,7 +29,7 @@ function showContactForm(){
 
     inputName.setAttribute('type', 'text') //debo determinar como primer arg que me refiero al tipo y luego el segundo indicará que es tipo texto, podría ser email, password...
 
-    inputName.setAttribute('id', 'name') //establezco que el id sera name
+    inputName.setAttribute('id', 'name') //establezco que el id será name
 
     inputName.setAttribute('placeholder', 'Your name');
 
@@ -80,6 +85,8 @@ function showContactForm(){
     const submitButton = document.createElement('button');
 
     submitButton.setAttribute('type', 'submit');
+
+    submitButton.textContent = 'Submit';
 
     submitButton.setAttribute('class', 'submit button'); //debo añadir ambas clases en un mismo atributo o usar submitButton.classList.add('submit', 'button');
 
