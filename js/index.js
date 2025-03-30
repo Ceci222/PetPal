@@ -37,10 +37,16 @@ function showHome(){
 
 
 
-document.getElementById('contact-link').addEventListener('click', function(event) {
+function contactClickHandler(event) {
     event.preventDefault(); 
-    showContactForm(); 
-});
+    showContactForm();  
+    
+    document.getElementById('contact-link').removeEventListener('click', contactClickHandler);
+}
+
+// Debo agregar nuevamente el event listener al enlace "Contact" 
+document.getElementById('contact-link').addEventListener('click', contactClickHandler);
+
 
 
 function showContactForm(){
@@ -139,3 +145,8 @@ function showContactForm(){
     contactSection.appendChild(submitButton);
 
 } 
+
+document.getElementById('contact-link').removeEventListener('click', function(event) {
+    event.preventDefault(); 
+    showContactForm(); 
+});
