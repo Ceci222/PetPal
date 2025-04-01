@@ -1,6 +1,7 @@
 
-document.getElementById('home-link').addEventListener('DOMContentLoaded', function(event) {
+document.getElementById('home-link').addEventListener('click', function(event) {
     event.preventDefault();  
+      
     showHome(); 
 });
 
@@ -14,6 +15,15 @@ function showHome(){
 
     const homeMessage = document.getElementById('home-message');
 
+    homeMessage.style.display = 'flex';
+
+    const contactSection = document.getElementById('contact');
+    // debo volver a buscar el elemento por id para luego volverlos string vacío
+    
+    contactSection.innerHTML = "";
+    
+    homeMessage.innerHTML="";//debo resetear el contenido antes para que no se mantengan los elementos creados previamente 
+    
     const homeH1 = document.createElement('h1')
 
     homeH1.textContent = 'PetPal';
@@ -41,7 +51,7 @@ function contactClickHandler(event) {
     event.preventDefault(); 
     showContactForm();  
     
-    document.getElementById('contact-link').removeEventListener('click', contactClickHandler);
+    //document.getElementById('contact-link').removeEventListener('click', contactClickHandler);
 }
 
 // Debo agregar nuevamente el event listener al enlace "Contact" 
@@ -50,12 +60,14 @@ document.getElementById('contact-link').addEventListener('click', contactClickHa
 
 
 function showContactForm(){
+    
     const contactSection = document.getElementById('contact');
 
     const homeMessage = document.getElementById('home-message');
     // si elimino esto el formulario funciona pero en la pagina principal
     homeMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
     
+/*  contactSection.innerHTML = ""*/
     //Campo name
 
     const contactH1 = document.createElement('h1');
@@ -146,7 +158,6 @@ function showContactForm(){
 
 } 
 
-document.getElementById('contact-link').removeEventListener('click', function(event) {
-    event.preventDefault(); 
-    showContactForm(); 
-});
+
+
+ 

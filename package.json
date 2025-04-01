@@ -1,0 +1,20 @@
+{
+  "name": "petpal",
+  "version": "1.0.0",
+  "description": "Javascript Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ceci222/PetPal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ceci222/PetPal/issues"
+  },
+  "homepage": "https://github.com/Ceci222/PetPal#readme"
+}
