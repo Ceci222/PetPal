@@ -67,7 +67,6 @@ function showContactForm(){
     // si elimino esto el formulario funciona pero en la pagina principal
     homeMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
     
-/*  contactSection.innerHTML = ""*/
     //Campo name
 
     const contactH1 = document.createElement('h1');
