@@ -1,162 +1,77 @@
+import { apiKey, apiSecret, url } from "./apikey.js";
 
-document.getElementById('home-link').addEventListener('click', function(event) {
-    event.preventDefault();  
-      
-    showHome(); 
-});
-
-document.addEventListener('DOMContentLoaded', function(event) {
-    event.preventDefault();  
-    showHome(); 
-});  
-
-
-function showHome(){
-
-    const homeMessage = document.getElementById('home-message');
-
-    homeMessage.style.display = 'flex';
-
-    const contactSection = document.getElementById('contact');
-    // debo volver a buscar el elemento por id para luego volverlos string vacío
-    
-    contactSection.innerHTML = "";
-    
-    homeMessage.innerHTML="";//debo resetear el contenido antes para que no se mantengan los elementos creados previamente 
-    
-    const homeH1 = document.createElement('h1')
-
-    homeH1.textContent = 'PetPal';
-
-    const homeParagraph = document.createElement('p');
-
-    homeParagraph.textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-
-    const homeImg = document.createElement('img');
-
-    homeImg.setAttribute('src', './assets/krista-mangulsone-9gz3wfHr65U-unsplash.jpg');
-
-    homeImg.setAttribute('alt', 'img');
-
-
-    homeMessage.appendChild(homeH1);
-    homeMessage.appendChild(homeParagraph);
-    homeMessage.appendChild(homeImg);
-
-} 
+let allSpecies = new Set();  
 
 
 
-function contactClickHandler(event) {
-    event.preventDefault(); 
-    showContactForm();  
-    
-    //document.getElementById('contact-link').removeEventListener('click', contactClickHandler);
+ export async function getAccessToken() {
+  try {
+     
+    const response = await fetch(url, {
+      method: 'POST',
+      body: new URLSearchParams({
+        'grant_type': 'client_credentials',
+        'client_id': apiKey,
+        'client_secret': apiSecret
+      }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    });
+
+    const data = await response.json();
+
+   
+    if (data.access_token) {
+      console.log('Access token:', data.access_token);
+      return data.access_token; 
+    } else {
+      console.error('Unable to get token');
+    }
+  } catch (error) {
+    console.error('Error getting token:', error);
+  }
 }
 
-// Debo agregar nuevamente el event listener al enlace "Contact" 
-document.getElementById('contact-link').addEventListener('click', contactClickHandler);
+
+export async function fetchAnimals() {
+  const token = await getAccessToken();
+
+  if (token) {
+    const animalsUrl = 'https://api.petfinder.com/v2/animals';
+
+    try {
+      const response = await fetch(animalsUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.animals) {
+        return data.animals;  
+      } else {
+        console.error('No animals found');
+      }
+    } catch (error) {
+      console.error('Error fetching animals:', error);
+    }
+  }
+}
 
 
 
-function showContactForm(){
-    
-    const contactSection = document.getElementById('contact');
+/* function getAnimalSpecies(animals) {
+  
+  animals.forEach(animal => {
+    if (animal.species) {
+      allSpecies.add(animal.species);  
+    }
+  });
 
-    const homeMessage = document.getElementById('home-message');
-    // si elimino esto el formulario funciona pero en la pagina principal
-    homeMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
-    
-    //Campo name
+  
+  const uniqueSpecies = Array.from(allSpecies);
+  console.log('Found Species:', uniqueSpecies);
+} */
 
-    const contactH1 = document.createElement('h1');
-
-    contactH1.textContent = 'Contact us';
-
-    const labelName = document.createElement('label');
-
-    labelName.setAttribute('for','name'); // estoy diciendo que el for y el id ambos seran name y estaran realcionados
-
-    labelName.textContent = 'Name'; //lo que verá el usuario en la etiqueta
-
-    const inputName =  document.createElement('input');
-
-    inputName.setAttribute('type', 'text') //debo determinar como primer arg que me refiero al tipo y luego el segundo indicará que es tipo texto, podría ser email, password...
-
-    inputName.setAttribute('id', 'name') //establezco que el id será name
-
-    inputName.setAttribute('placeholder', 'Your name');
-
-    inputName.setAttribute('required', true); //el true se puede reemplazar por comillas vacías o repetir "required"
-
-    
-
-    // Campo email
-    const labelEmail = document.createElement('label');
-
-    labelEmail.setAttribute('for', 'email');
-
-    labelEmail.textContent = 'Email';
-
-
-    const inputEmail = document.createElement('input');
-
-    inputEmail.setAttribute('type', 'email');
-
-    inputEmail.setAttribute('id', 'email');
-
-    inputEmail.setAttribute('placeholder', 'Your Email');
-
-    inputEmail.setAttribute('required', true);
-
-
-    // Textarea
-
-   /*  <label for="message">Message</label>
-    <textarea name="message" id="message" required>Message</textarea> */
-
-    const textareaLabel = document.createElement('label');
-
-    textareaLabel.setAttribute('for', 'message');
-
-    textareaLabel.textContent = 'Message';
-
-
-    const textareaInput = document.createElement('textarea');
-    
-    textareaInput.setAttribute('name', 'message');
-
-    textareaInput.setAttribute('id', 'message');
-
-    textareaInput.setAttribute('placeholder', 'Message')
-
-    textareaInput.setAttribute('required', true);
-
-    //Botón enviar
-
-    // <button class="submit button" type="submit"> Submit </button>
-
-    const submitButton = document.createElement('button');
-
-    submitButton.setAttribute('type', 'submit');
-
-    submitButton.textContent = 'Submit';
-
-    submitButton.setAttribute('class', 'submit button'); //debo añadir ambas clases en un mismo atributo o usar submitButton.classList.add('submit', 'button');
-
-    //Añadir los elementos creados, los puedo agregar a medida que se crean o al final todos juntos
-
-    contactSection.appendChild(contactH1);
-    contactSection.appendChild(labelName);
-    contactSection.appendChild(inputName);
-    contactSection.appendChild(labelEmail);
-    contactSection.appendChild(inputEmail);
-    contactSection.appendChild(textareaLabel);
-    contactSection.appendChild(textareaInput);
-    contactSection.appendChild(submitButton);
-
-} 
-
-
-
- 
+ fetchAnimals();

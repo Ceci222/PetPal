@@ -4,7 +4,7 @@
     justify-content: space-evenly;
 }
 
-#home-message {
+#home {
     display: flex;
     flex-direction: column;
     justify-content: center;  
@@ -12,7 +12,7 @@
     text-align: center;  
 }
 
-#home-message img {
+#home img {
     width: 50%;  
     height: auto; 
 }
@@ -47,3 +47,34 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.pet-wrapper {
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+
+.petfinder-section {
+    display: flex;
+    flex-direction: column;
+    border: 5px;
+    color: red;
+}
+
+
+.petfinder-section button{
+    display: flex;
+    justify-content: center;
+    width: 10%;
+
+}
+
+.petfinder-section img{
+    width: 300px;
+}
+
+/* .pet-wrapper{
+    display: flex;
+    flex-direction: row;
+} */
