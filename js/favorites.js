@@ -12,12 +12,18 @@ document.getElementById('favorites-link').addEventListener('click', function(eve
     favsContainer.appendChild(title);  */
 
     function renderFavs() {
+
         const favsContainer = document.getElementById('favourites');
-        favsContainer.innerHTML = '';  
-    
-        const homeMessage = document.getElementById('home');
-        homeMessage.style.display = 'none';  
-    
+        const homeSection = document.getElementById('home'); 
+        const petfinderSection = document.getElementById('petfinder'); 
+        const contactSection = document.getElementById('contact'); 
+
+        favsContainer.style.display = 'block';  
+        homeSection.style.display = 'none';  
+        petfinderSection.style.display = 'none'; 
+        contactSection.style.display = 'none'; 
+
+        favsContainer.innerHTML = ''
         
         const title = document.createElement('h1');  //Al ser SPA en función de dónde se genera el div en index.html varía que se renderice arriba o abajo
         title.textContent = 'Pets I would like to adopt';

@@ -1,5 +1,5 @@
 
-document.getElementById('home').addEventListener('click', function(event) {
+document.getElementById('home-link').addEventListener('click', function(event) {
     event.preventDefault();  
       
     showHome(); 
@@ -9,18 +9,21 @@ document.addEventListener('DOMContentLoaded', function(event) {
     event.preventDefault();  
     showHome(); 
 });  
+
  
 
 function showHome(){
 
     const homeMessage = document.getElementById('home');
-
     homeMessage.style.display = 'flex';
 
+    const petfinderSection = document.getElementById('petfinder');
+    const favouritesSection = document.getElementById('favourites');
     const contactSection = document.getElementById('contact');
-    // debo volver a buscar el elemento por id para luego volverlos string vacío
-    
-    contactSection.innerHTML = "";
+
+    petfinderSection.style.display = 'none';
+    favouritesSection.style.display = 'none';
+    contactSection.style.display = 'none';
     
     homeMessage.innerHTML="";//debo resetear el contenido antes para que no se mantengan los elementos creados previamente
     

@@ -15,24 +15,21 @@
         <nav class="navbar">
             <a href="#home"  id="home-link">Home</a>
             <a href="#petfinder" id="petfinder-link">Pet finder</a>
-            <a href="#favorites" id="favorites-link">Favourites</a>
+            <a href="#favorites" id="favorites-link">Favorites</a>
             <a href="#contact" id="contact-link" >Contact</a>
         </nav>
     </header>
 
     <main>
-        <section id="home-message">
-            <!-- <h1>PetPal</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, soluta animi laboriosam dolorum autem quos commodi nisi fugit non. Officia ipsa soluta dolor tempore, accusantium debitis voluptatibus harum reiciendis veniam?</p>
-            <img src="./assets/krista-mangulsone-9gz3wfHr65U-unsplash.jpg" alt="img">  -->
-        </section>
-
-            <section id="home" class="home-section"></section>
-            <section id="favourites" class="favourites-section"></section>
-            <section id="petfinder" class="petfinder-section"></section>
-            <section id="contact" class="contact-section"></section>
-
-        </section>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input id="search-input" type="text" placeholder="Search cat, dog, hamster...">
+            <button id="search-button">Search</button>
+        </div>
+        <section id="home"></section>
+        <section id="petfinder" class="petfinder-section"></section>
+        <section id="favourites" class="favourites-section"></section>
+        <section id="contact" class="contact-section"></section>
     </main>
 
     <footer>
@@ -49,5 +46,6 @@
     <script defer type="module" src="./js/favorites.js"></script>
     <script defer type="module" src="./js/index.js"></script>
     <script defer type="module" src="./js/classes.js"></script>
+    <script defer type="module" src="./js/searchbar.js"></script>
 </body>
 </html>

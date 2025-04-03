@@ -12,8 +12,6 @@ import { PetForAdoption } from './classes.js';
             console.error('Unable to load animals');
         }
     });
-
-
     
      function createPet(animals) {
         return animals.map(animal => new PetForAdoption(
@@ -34,15 +32,20 @@ import { PetForAdoption } from './classes.js';
     
     export function renderAnimals(animals) { 
 
-        const petfinderSection = document.getElementById('petfinder');  
-            
-        petfinderSection.innerHTML = ''; // debo limpiar antes de generar otro
+        const petfinderSection = document.getElementById('petfinder');
+        petfinderSection.innerHTML = ''; 
+        petfinderSection.style.display = 'flex'; 
+
+        const homeSection = document.getElementById('home');
+        homeSection.style.display = 'none';
+
+        const favouritesSection = document.getElementById('favourites');
+        favouritesSection.style.display = 'none';
+
+        const contactSection = document.getElementById('contact');
+        contactSection.style.display = 'none';
 
         animals.forEach(pet => {
-
-            const homeMessage = document.getElementById('home');
-    
-            homeMessage.style.display = 'none'; //oculto el home
     
             const petWrapper = document.createElement('div');
             petWrapper.setAttribute('class', 'pet-wrapper')
@@ -69,8 +72,8 @@ import { PetForAdoption } from './classes.js';
             petName.textContent = 'Name:';
             const petNameParagraph = document.createElement('p');
             petNameParagraph.textContent = pet.name ||'This pet is waiting for you to give it a name';
-            /* document.getElementById('petfinder').appendChild(petName);
-            document.getElementById('petfinder').appendChild(petNameParagraph);  */
+             
+
             nameContainer.append(petName, petNameParagraph);
             petWrapper.appendChild(nameContainer);
             
@@ -82,9 +85,7 @@ import { PetForAdoption } from './classes.js';
             petIdParagraph.textContent = pet.id ? pet.id : 'ID not available';
             petIdContainer.append(petId, petIdParagraph); 
             petWrapper.appendChild(petIdContainer);
-    
-           /*  document.getElementById('petfinder').appendChild(petId);
-            document.getElementById('petfinder').appendChild(petIdParagraph); */
+
             
             const petSpeciesContainer = document.createElement('div');
             petSpeciesContainer.className = 'pet-info-pairs';
@@ -95,8 +96,6 @@ import { PetForAdoption } from './classes.js';
             petSpeciesContainer.append(petSpecies, petSpeciesParagraph); 
             petWrapper.appendChild(petSpeciesContainer);
 
-            /* document.getElementById('petfinder').appendChild(petSpecies);
-            document.getElementById('petfinder').appendChild(petSpeciesParagraph); */
             
             const petAgeContainer = document.createElement('div');
             petAgeContainer.className = 'pet-info-pairs';
@@ -106,8 +105,7 @@ import { PetForAdoption } from './classes.js';
             petAgeParagraph.textContent = pet.age ? pet.age : 'Age not available';
             petAgeContainer.append(petAge, petAgeParagraph); 
             petWrapper.appendChild(petAgeContainer);
-            /* document.getElementById('petfinder').appendChild(petAge);
-            document.getElementById('petfinder').appendChild(petAgeParagraph); */
+            
     
             const petGenderContainer = document.createElement('div');
             petGenderContainer.className = 'pet-info-pairs';    
@@ -118,8 +116,7 @@ import { PetForAdoption } from './classes.js';
             petGenderContainer.append(petGender, petGenderParagraph); 
             petWrapper.appendChild(petGenderContainer);
 
-            /* document.getElementById('petfinder').appendChild(petGender);
-            document.getElementById('petfinder').appendChild(petGenderParagraph); */
+           
             
             const petSizeContainer = document.createElement('div');
             petSizeContainer.className = 'pet-info-pairs';  
@@ -130,32 +127,31 @@ import { PetForAdoption } from './classes.js';
             petSizeContainer.append(petSize, petSizeParagraph); 
             petWrapper.appendChild(petSizeContainer);
 
-            /* document.getElementById('petfinder').appendChild(petSize);
-            document.getElementById('petfinder').appendChild(petSizeParagraph); */
+            
         
             const petDescriptionContainer = document.createElement('div');
-            petDescriptionContainer.className = 'pet-info-pairs'; 
+            petDescriptionContainer.className = 'pet-info-pair'; 
             const petDescription =  document.createElement('h1');
             petDescription.textContent  = 'Description:';
             const petDescriptionParagraph=  document.createElement('p');
             petDescriptionParagraph.textContent = pet.description ? pet.description : 'Description not available';
             petDescriptionContainer.append(petDescription, petDescriptionParagraph); 
             petWrapper.appendChild(petDescriptionContainer);
-            /* document.getElementById('petfinder').appendChild(petDescription);
-            document.getElementById('petfinder').appendChild(petDescriptionParagraph);
-     */
+  
+
             const petAdopt =  document.createElement('h1');
             petAdopt.textContent  = 'Wanna adopt this cutie?';
             const petAdoptH2 =  document.createElement('h2');
             petAdoptH2.textContent = 'Contact us:';
             const petAdoptParagraph = document.createElement('p');
             petAdoptParagraph.textContent = "adoptions@petfinder.com";
-            document.getElementById('petfinder').appendChild(petAdopt);
-            document.getElementById('petfinder').appendChild(petAdoptH2);
-            document.getElementById('petfinder').appendChild(petAdoptParagraph);
+            document.getElementById('petfinder').appendChild(petAdopt);  // Cambiar por:
+            petWrapper.appendChild(petAdopt);
+            petWrapper.appendChild(petAdoptH2);
+            petWrapper.appendChild(petAdoptParagraph);
     
             const favoriteButton = document.createElement('button');
-            document.getElementById('petfinder').appendChild(favoriteButton);
+            petWrapper.appendChild(favoriteButton);
     
             favoriteButton.textContent = pet.isFavorite ? 'Remove Favorite' : 'Add Favorite'; //ternario, si pet is fav es true pongo un texto, si no el otro
             favoriteButton.onclick = () => {
@@ -173,40 +169,4 @@ import { PetForAdoption } from './classes.js';
         const favorites = animals.filter(pet => pet.isFavorite); 
         localStorage.setItem('favoritePets', JSON.stringify(favorites)); 
     }
-    
-
-   /* 
-    function renderFavs(animals) {
-        const renderedFavs = animals.filter(pet => pet.isFavorite); 
-        const favsContainer = document.getElementById('petfinder-link');
-        favsContainer.innerHTML = ''; 
-    
-        const title = document.createElement('h1');
-        title.textContent = 'Pets I would like to adopt';
-        favsContainer.appendChild(title);
-    
-        if (renderedFavs.length === 0) {
-            const noFavs = document.createElement('p');
-            noFavs.textContent = 'No favourites yet';
-            favsContainer.appendChild(noFavs);
-            return;
-        }
-    
-        renderAnimals(renderedFavs); 
-    } */
-    
-    
-    
-    
-/*     window.onload = async function() {
-        const animals = await fetchAnimals();  
-        if (animals) {  
-            const petInstances = createPet(animals); 
-            
-            renderAnimals(petInstances)
-        } else {
-            console.error('Unable to load animals');
-        }
-    };
-       */
     

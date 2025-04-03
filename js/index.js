@@ -2,8 +2,6 @@ import { apiKey, apiSecret, url } from "./apikey.js";
 
 let allSpecies = new Set();  
 
-
-
  export async function getAccessToken() {
   try {
      
@@ -52,13 +50,17 @@ export async function fetchAnimals() {
         return data.animals;  
       } else {
         console.error('No animals found');
+        return [];  
       }
     } catch (error) {
       console.error('Error fetching animals:', error);
+      return [];  
     }
   }
+  return [];  
 }
 
+fetchAnimals();
 
 
 /* function getAnimalSpecies(animals) {
@@ -74,4 +76,3 @@ export async function fetchAnimals() {
   console.log('Found Species:', uniqueSpecies);
 } */
 
- fetchAnimals();

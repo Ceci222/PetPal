@@ -1,3 +1,4 @@
+
 function contactClickHandler(event) {
     event.preventDefault(); 
     showContactForm();  
@@ -5,21 +6,23 @@ function contactClickHandler(event) {
     //document.getElementById('contact').removeEventListener('click', contactClickHandler);
 } 
 
-// Debo agregar nuevamente el event listener al enlace "Contact" 
 
-
-document.getElementById('contact-link').addEventListener('click', contactClickHandler);
+  document.getElementById('contact-link').addEventListener('click', contactClickHandler);
  
+
 function showContactForm(){
     
     const contactSection = document.getElementById('contact');
+    const homeSection = document.getElementById('home');  
+    const petfinderSection = document.getElementById('petfinder');  
+    const favouritesSection = document.getElementById('favourites'); 
 
+    contactSection.style.display = 'flex'; 
+    homeSection.style.display = 'none'; 
+    petfinderSection.style.display = 'none';  
+    favouritesSection.style.display = 'none';  
 
-    const homeMessage = document.getElementById('home');
-    
-    homeMessage.style.display = 'none'; //tengo que hacer lo mismo con las demás secciones
-
-    contactSection.innerHTML = ""; //primero busco los elementos del html y luego lo limpio
+    contactSection.innerHTML = ""; //primero busco los elementos del html y luego lo limpioio
  
     //Campo name
 
