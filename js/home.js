@@ -25,19 +25,21 @@ function showHome(){
     favouritesSection.style.display = 'none';
     contactSection.style.display = 'none';
     
-    homeMessage.innerHTML="";//debo resetear el contenido antes para que no se mantengan los elementos creados previamente
-    
+    homeMessage.innerHTML="";
     const petWrapper = document.getElementById('petfinder');
 
     petWrapper.innerHTML = '';
+
+    const homeContent = document.createElement('div');
+    homeContent.className = 'home-content';
     
     const homeH1 = document.createElement('h1')
-
-    homeH1.textContent = 'PetPal';
+    
+    homeH1.innerHTML = 'PetPal <span class="material-icons">pets</span>';
 
     const homeParagraph = document.createElement('p');
 
-    homeParagraph.textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+    homeParagraph.textContent = "Change a life today — your new best friend is waiting."
 
     const homeImg = document.createElement('img');
 
@@ -46,8 +48,9 @@ function showHome(){
     homeImg.setAttribute('alt', 'img');
 
 
-    homeMessage.appendChild(homeH1);
-    homeMessage.appendChild(homeParagraph);
+    homeContent.appendChild(homeH1);
+    homeContent.appendChild(homeParagraph);
     homeMessage.appendChild(homeImg);
+    homeMessage.appendChild(homeContent);
 
 } 

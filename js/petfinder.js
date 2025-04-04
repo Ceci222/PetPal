@@ -13,20 +13,20 @@ import { PetForAdoption } from './classes.js';
         }
     });
     
-     function createPet(animals) {
-        return animals.map(animal => new PetForAdoption(
-            animal.photos?.[0]?.medium || null,
-            animal.name || 'Name not available',
-            animal.id || 'ID not available',
-            animal.species || 'Species not available',
-            animal.age || 'Age not available',
-            animal.gender || 'Gender not available',
-            animal.size || 'Size not available',
-            animal.description ||  'Description not available', 
-          
-            ))
-    
-        };
+    function createPet(animals) {
+    return animals.map(animal => new PetForAdoption(
+        animal.photos?.[0]?.medium || null,
+        animal.name || 'Name not available',
+        animal.id || 'ID not available',
+        animal.species || 'Species not available',
+        animal.age || 'Age not available',
+        animal.gender || 'Gender not available',
+        animal.size || 'Size not available',
+        animal.description ||  'Description not available', 
+        
+        ))
+
+    };
     
  
     
@@ -58,10 +58,10 @@ import { PetForAdoption } from './classes.js';
                 petPhotos.src = pet.photo;
                 petPhotos.alt = 'Pet image';
                 petPhotos.onerror = () => {
-                    petPhotos.src = './assets/no-pic.jpg'; 
+                    petPhotos.src = './assets/pug.jpg'; 
                 };
             } else {
-                petPhotos.src = './assets/pug.jpg';
+                petPhotos.src = './assets/no-pic.jpg';
             }
     
             petWrapper.appendChild(petPhotos)
@@ -128,7 +128,6 @@ import { PetForAdoption } from './classes.js';
             petWrapper.appendChild(petSizeContainer);
 
             
-        
             const petDescriptionContainer = document.createElement('div');
             petDescriptionContainer.className = 'pet-info-pair'; 
             const petDescription =  document.createElement('h1');
@@ -140,24 +139,25 @@ import { PetForAdoption } from './classes.js';
   
 
             const petAdopt =  document.createElement('h1');
-            petAdopt.textContent  = 'Wanna adopt this cutie?';
-            const petAdoptH2 =  document.createElement('h2');
-            petAdoptH2.textContent = 'Contact us:';
+            petAdopt.textContent  = 'Wanna know more?';
+            const petAdoptH1 =  document.createElement('h1');
+            petAdoptH1.textContent = 'Contact us:';
             const petAdoptParagraph = document.createElement('p');
             petAdoptParagraph.textContent = "adoptions@petfinder.com";
-            document.getElementById('petfinder').appendChild(petAdopt);  // Cambiar por:
+            document.getElementById('petfinder').appendChild(petAdopt);  
             petWrapper.appendChild(petAdopt);
-            petWrapper.appendChild(petAdoptH2);
+            petWrapper.appendChild(petAdoptH1);
             petWrapper.appendChild(petAdoptParagraph);
     
             const favoriteButton = document.createElement('button');
             petWrapper.appendChild(favoriteButton);
     
-            favoriteButton.textContent = pet.isFavorite ? 'Remove Favorite' : 'Add Favorite'; //ternario, si pet is fav es true pongo un texto, si no el otro
+            favoriteButton.textContent = pet.isFavorite ? '♥' : '♡'; 
+            favoriteButton.className = 'favorite-button';
             favoriteButton.onclick = () => {
-                pet.isFavorite = !pet.isFavorite; // al clicar se asigna el valor contrario al actual. Si no es fav, al darle, lo será y viceversa
-                favoriteButton.textContent = pet.isFavorite ? 'Remove Favorite' : 'Add Favorite'; //actualizo el texto del botón
-                saveFavorites(animals); // Guarda solo favoritos
+                pet.isFavorite = !pet.isFavorite; 
+                favoriteButton.textContent = pet.isFavorite ? '♥' : '♡'; 
+                saveFavorites(animals); 
             };
     
         });

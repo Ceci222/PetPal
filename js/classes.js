@@ -19,22 +19,7 @@ export class PetForAdoption {
         this.isFavorite = false;
     }
 
-/*     showInfo() {
-        console.log(`Photo: ${this.photo || "No photo available"}`);
-        console.log(`Name: ${this.name}`);
-        console.log(`Species: ${this.species}`);
-        console.log(`Age: ${this.age}`);
-        console.log(`Gender: ${this.gender}`);
-        console.log(`Size: ${this.size}`);
-        console.log(`Description: ${this.description}`);
-        console.log(`Location: ${this.location.city}, ${this.location.state}`);
-        console.log(`Available for adoption: ${this.status === "adoptable" ? "Yes" : "No"}`);
-        console.log(`More info: ${this.url}`);
-    }
 
-    showImg() {
-        console.log(this.photo || "No image available")
-    } */
 
 }
  

@@ -3,7 +3,6 @@ function contactClickHandler(event) {
     event.preventDefault(); 
     showContactForm();  
     
-    //document.getElementById('contact').removeEventListener('click', contactClickHandler);
 } 
 
 
@@ -22,7 +21,7 @@ function showContactForm(){
     petfinderSection.style.display = 'none';  
     favouritesSection.style.display = 'none';  
 
-    contactSection.innerHTML = ""; //primero busco los elementos del html y luego lo limpioio
+    contactSection.innerHTML = ""; 
  
     //Campo name
 
@@ -32,23 +31,24 @@ function showContactForm(){
 
     const labelName = document.createElement('label');
 
-    labelName.setAttribute('for','name'); // estoy diciendo que el for y el id ambos seran name y estaran realcionados
+    labelName.setAttribute('for','name'); 
 
-    labelName.textContent = 'Name'; //lo que verá el usuario en la etiqueta
+    labelName.textContent = 'Name';
 
     const inputName =  document.createElement('input');
 
-    inputName.setAttribute('type', 'text') //debo determinar como primer arg que me refiero al tipo y luego el segundo indicará que es tipo texto, podría ser email, password...
+    inputName.setAttribute('type', 'text') 
 
-    inputName.setAttribute('id', 'name') //establezco que el id será name
+    inputName.setAttribute('id', 'name') 
 
     inputName.setAttribute('placeholder', 'Your name');
 
-    inputName.setAttribute('required', true); //el true se puede reemplazar por comillas vacías o repetir "required"
+    inputName.setAttribute('required', true); 
 
     
 
     // Campo email
+
     const labelEmail = document.createElement('label');
 
     labelEmail.setAttribute('for', 'email');
@@ -69,9 +69,6 @@ function showContactForm(){
 
     // Textarea
 
-   /*  <label for="message">Message</label>
-    <textarea name="message" id="message" required>Message</textarea> */
-
     const textareaLabel = document.createElement('label');
 
     textareaLabel.setAttribute('for', 'message');
@@ -91,7 +88,6 @@ function showContactForm(){
 
     //Botón enviar
 
-    // <button class="submit button" type="submit"> Submit </button>
 
     const submitButton = document.createElement('button');
 
@@ -99,9 +95,9 @@ function showContactForm(){
 
     submitButton.textContent = 'Submit';
 
-    submitButton.setAttribute('class', 'submit button'); //debo añadir ambas clases en un mismo atributo o usar submitButton.classList.add('submit', 'button');
+    submitButton.setAttribute('class', 'submit button'); 
 
-    //Añadir los elementos creados, los puedo agregar a medida que se crean o al final todos juntos
+  
 
     contactSection.appendChild(contactH1);
     contactSection.appendChild(labelName);

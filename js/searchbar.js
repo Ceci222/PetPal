@@ -1,14 +1,13 @@
 import { fetchAnimals } from './index.js';
 import { renderAnimals } from './petfinder.js';
 
+
 document.getElementById('search-button').addEventListener('click', async (event) => {
     event.preventDefault();
     const searchInput = document.getElementById('search-input');
     const query = searchInput.value.trim().toLowerCase();
-    const animals = await fetchAnimals(query);
+    const animals = await fetchAnimals();
     
-    searchInput.value = '';
-
     const petfinderSection = document.getElementById('petfinder');
     petfinderSection.innerHTML = '';
     petfinderSection.style.display = 'flex';
@@ -20,8 +19,11 @@ document.getElementById('search-button').addEventListener('click', async (event)
     const contactSection = document.getElementById('contact');
     contactSection.style.display = 'none';
 
+
     if (animals.length > 0) {
-        const filteredAnimals = animals.filter(animal => animal.species.toLowerCase() === query);
+        const filteredAnimals = animals.filter(animal => animal.species.toLowerCase() === query); 
+        searchInput.value = '';
+
         if (filteredAnimals.length > 0) {
             renderAnimals(filteredAnimals);
         } else {

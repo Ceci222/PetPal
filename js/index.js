@@ -63,16 +63,4 @@ export async function fetchAnimals() {
 fetchAnimals();
 
 
-/* function getAnimalSpecies(animals) {
-  
-  animals.forEach(animal => {
-    if (animal.species) {
-      allSpecies.add(animal.species);  
-    }
-  });
-
-  
-  const uniqueSpecies = Array.from(allSpecies);
-  console.log('Found Species:', uniqueSpecies);
-} */
 
